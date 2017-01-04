@@ -32,9 +32,9 @@ class Gallery
     /**
      * @ORM\Column(type="text")
      *
-     * @Assert\NotBlank(message="Enter comment!")
+     * @Assert\NotBlank(message="Enter comment")
      *
-     * @Assert\Length(min=5, max=100, minMessage="To short comment!", maxMessage="To long comment!")
+     * @Assert\Length(min=5, max=100, minMessage="To short comment!", maxMessage="To long comment")
      */
     protected $comment;
 
@@ -50,9 +50,9 @@ class Gallery
      */
 
     /**
-     * @Assert\File(maxSize="1000000", maxSizeMessage="To big image!", mimeTypes={"image/png", "image/jpg", "image/jpeg"}, mimeTypesMessage="Not allowed format!")
+     * @Assert\File(maxSize="1000000", maxSizeMessage="To big image", mimeTypes={"image/png", "image/jpg", "image/jpeg"}, mimeTypesMessage="Not allowed format")
      *
-     * @Assert\NotBlank(message="Choose your image!")
+     * @Assert\NotBlank(message="Choose your image")
      */
     private $file;
 

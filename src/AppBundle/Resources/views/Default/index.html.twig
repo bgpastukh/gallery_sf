@@ -21,7 +21,7 @@
                     {{ form_row(form.comment) }}
                     {{ form_row(form.submit, {'attr':{'data-url': path('upload_image')}}) }}
                     {{ form_end(form) }}
-                    <div class="massage"></div>
+                    <div class="message"></div>
 
                     <h2>Sort by:</h2>
                     <button data-url-asc="{{ path('sort', {"sort":"date",'direction':'asc'}) }}" data-url-desc="{{ path('sort', {"sort":"date",'direction':'desc'}) }}" type="button" class="btn btn-default sort">Date</button>

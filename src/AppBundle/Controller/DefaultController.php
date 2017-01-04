@@ -55,7 +55,7 @@ class DefaultController extends Controller
 
             $view = $this->renderView('AppBundle:Default:form.html.twig', ['image' => $gallery]);
 
-            return new JsonResponse(['status' => 1, 'html' => $view, 'massage' => 'Image was uploaded!']);
+            return new JsonResponse(['status' => 1, 'html' => $view, 'message' => 'Image was uploaded']);
         }
 
         $returnMsg = "";
@@ -64,7 +64,7 @@ class DefaultController extends Controller
             foreach ($errors as $error)
             $returnMsg .= $error->getMessage() . " ";
         }
-        return new JsonResponse(['status' => 0, 'massage' => $returnMsg]);
+        return new JsonResponse(['status' => 0, 'message' => $returnMsg]);
     }
 
     /**
@@ -82,7 +82,7 @@ class DefaultController extends Controller
 
         unlink($src);
 
-        return new JsonResponse(['status' => 1]);
+        return new JsonResponse(['status' => 1, 'message' => "Image was deleted"]);
     }
 
     /**
@@ -98,7 +98,7 @@ class DefaultController extends Controller
         $image->setComment($comment);
         $em->flush();
 
-        return new JsonResponse(['status' => 1]);
+        return new JsonResponse(['status' => 1, 'message' => 'Comment was edited']);
     }
 
     /**

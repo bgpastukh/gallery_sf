@@ -4,10 +4,16 @@ $('body').on('click', '.delete-btn', function () {
     var src = $(this).data('url');
     $.post(
         src
-    ).done(function () {
+    ).done(function (data) {
         toDel.remove();
-        $('.massage').addClass('bg-success');
-        $('.massage').text('Deleted!');
+        if (data.status){
+            $('.message').removeClass('bg-danger');
+            $('.message').addClass('bg-success');
+        } else {
+            $('.message').removeClass('bg-success');
+            $('.message').addClass('bg-danger');
+        }
+        $('.message').text(data.message);
     });
 });
 
@@ -20,9 +26,12 @@ $('body').on('click', '.edit-btn', function () {
 
 //        Sending
     $.post( src, {'comment': comment}
-    ).done(function () {
-        $('.massage').addClass('bg-success');
-        $('.massage').text('Comment was changed!');
+    ).done(function (data) {
+        if (data.status){
+            $('.message').removeClass('bg-danger');
+            $('.message').addClass('bg-success');
+        }
+        $('.message').text(data.message);
     });
 });
 
@@ -62,22 +71,22 @@ $('.submit').click(function (event) {
 //
 //     var emptyFields = $('.empty_field');
 //     if (emptyFields[0]) {
-//         $('.massage').addClass('bg-danger');
-//         $('.massage').text('All fields required!');
+//         $('.message').addClass('bg-danger');
+//         $('.message').text('All fields required!');
 //         return;
 //     }
 //     var fileSize = files[0].size;
 //
 //     if (fileSize > maxsize) {
-//         $('.massage').addClass('bg-danger');
-//         $('.massage').text('Image is to big!');
+//         $('.message').addClass('bg-danger');
+//         $('.message').text('Image is to big!');
 //         return;
 //     }
 //
 //     var status = allowedFormats.test(files[0].name);
 //     if (!status){
-//         $('.massage').addClass('bg-danger');
-//         $('.massage').text('Not allowed format!');
+//         $('.message').addClass('bg-danger');
+//         $('.message').text('Not allowed format!');
 //         return;
 //     }
 
@@ -101,14 +110,14 @@ $('.submit').click(function (event) {
     }).done(function (data) {
         $('.gallery').append(data.html);
         if (data.status){
-            $('.massage').removeClass('bg-danger');
-            $('.massage').addClass('bg-success');
+            $('.message').removeClass('bg-danger');
+            $('.message').addClass('bg-success');
             $('.panel')[0].reset();
         } else {
-            $('.massage').removeClass('bg-success');
-            $('.massage').addClass('bg-danger');
+            $('.message').removeClass('bg-success');
+            $('.message').addClass('bg-danger');
         }
-        $('.massage').text(data.massage);
+        $('.message').text(data.message);
     });
 });
 
