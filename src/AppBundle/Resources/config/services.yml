@@ -1,0 +1,4 @@
+services:
+    app.file_uploader:
+        class: AppBundle\Service\FileUploader
+        arguments: ["%upload_dir%"]

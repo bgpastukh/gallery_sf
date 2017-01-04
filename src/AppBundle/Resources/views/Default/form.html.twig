@@ -1,0 +1,11 @@
+    <div class="image">
+        <div class="image-pic">
+            <img class="img-thumbnail user-image" src="{{ image.absolutePath }}">
+        </div>
+        <div class="image-info">
+            <div class="well date">{{ image.date|date }}</div>
+            <input type="text" class="well comment" value="{{ image.comment }}">
+            <button data-url="{{ path('delete_image', {"id":image.id}) }}" type="button" class="btn btn-sm btn-danger img-btn delete-btn">Delete</button>
+            <button data-url="{{ path('edit_comment', {"id":image.id}) }}" type="button" class="btn btn-sm btn-primary img-btn edit-btn">Edit</button>
+        </div>
+    </div>

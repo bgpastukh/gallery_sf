@@ -1,0 +1,91 @@
+body {
+    padding-top: 20px;
+    background-color: darkgrey;
+}
+.starter-template {
+    text-align: center;
+}
+
+.panel {
+    text-align: center;
+    padding: 10px;
+}
+
+.user-image {
+    margin: 5px 0 10px;
+}
+
+.image-info {
+    height: 300px;
+}
+
+.image-info {
+    width: 48%;
+    float: right;
+}
+
+.image-pic {
+    width: 50%;
+    float: left;
+}
+
+.image {
+    height: 300px;
+}
+
+.choose {
+    margin-left: 20%;
+    margin-bottom: 10px;
+}
+
+.img-btn {
+    margin-left: 5px;
+}
+
+.comment {
+    width: 265px;
+    margin-left: 5px;
+}
+
+.date {
+    margin-left: 5px;
+}
+
+.submit {
+    margin-top: 15px;
+}
+
+.massage {
+    margin: 10px auto 0;
+    width: 150px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.asc:after {
+    content: "\bb";
+    position: relative;
+    bottom: 0;
+    display: inline-block;
+    margin-left: 1.4em;
+    vertical-align: middle;
+    font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+    font-weight: 700;
+    font-size: 140%;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(-90deg);
+}
+
+.desc:after {
+    content: "\bb";
+    position: relative;
+    bottom: 0;
+    display: inline-block;
+    margin-left: 1.4em;
+    vertical-align: middle;
+    font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+    font-weight: 700;
+    font-size: 140%;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
