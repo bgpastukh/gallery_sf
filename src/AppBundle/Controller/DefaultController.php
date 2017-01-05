@@ -21,7 +21,7 @@ class DefaultController extends Controller
 
         $images = $this->getDoctrine()
             ->getRepository('AppBundle:Gallery')
-            ->findAll();
+            ->findBy(['user' => $this->getUser()]);
 
         return $this->render(
             'AppBundle:Default:index.html.twig',
@@ -41,13 +41,13 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $file = $gallery->getFile();
             $fileName = $this->get('app.file_uploader')->upload($file);
 
             $gallery
                 ->setName($fileName)
+                ->setUser($this->getUser())
                 ->setSize($file->getSize());
 
             $em->persist($gallery);
@@ -75,7 +75,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $image = $em
             ->getRepository('AppBundle:Gallery')
-            ->find($id);
+            ->findOneBy(['id' => $id, 'user' => $this->getUser()]);
         $src = $image->getPath();
         $em->remove($image);
         $em->flush();
@@ -94,7 +94,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $image = $em
             ->getRepository('AppBundle:Gallery')
-            ->find($id);
+            ->findOneBy(['id' => $id, 'user' => $this->getUser()]);
         $image->setComment($comment);
         $em->flush();
 
@@ -106,7 +106,7 @@ class DefaultController extends Controller
      */
     public function sortAction(Request $request, $sort, $direction)
     {
-        $gallery = $this->getDoctrine()->getRepository(Gallery::class)->findBy([], [$sort => $direction]);
+        $gallery = $this->getDoctrine()->getRepository(Gallery::class)->findBy(['user' => $this->getUser()], [$sort => $direction]);
         $view = "";
         foreach ($gallery as $image) {
             $view .= $this->renderView('AppBundle:Default:form.html.twig', ['image' => $image]);
@@ -115,4 +115,3 @@ class DefaultController extends Controller
         return new JsonResponse(['status' => 1, 'html' => $view]);
     }
 }
-

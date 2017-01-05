@@ -22,7 +22,6 @@ class Gallery
     /**
      * @ORM\Column(type="string", length=128, nullable=false)
      */
-
     protected $name;
     /**
      * @ORM\Column(type="datetime")
@@ -31,9 +30,7 @@ class Gallery
 
     /**
      * @ORM\Column(type="text")
-     *
      * @Assert\NotBlank(message="Enter comment")
-     *
      * @Assert\Length(min=5, max=100, minMessage="To short comment!", maxMessage="To long comment")
      */
     protected $comment;
@@ -44,18 +41,22 @@ class Gallery
     protected $size;
 
     /**
-     * Get id
-     *
-     * @return integer
-     */
-
-    /**
      * @Assert\File(maxSize="1000000", maxSizeMessage="To big image", mimeTypes={"image/png", "image/jpg", "image/jpeg"}, mimeTypesMessage="Not allowed format")
-     *
      * @Assert\NotBlank(message="Choose your image")
      */
     private $file;
 
+    /**
+     * Many images applies to one user
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * Get id
+     * @return integer
+     */
     public function getId()
     {
         return $this->id;
@@ -84,7 +85,6 @@ class Gallery
     {
         return $this->name;
     }
-
 
     /**
      * Set date
@@ -189,4 +189,25 @@ class Gallery
     {
         return "/uploads/" . $this->getName();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     * @return Gallery
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+
+
 }

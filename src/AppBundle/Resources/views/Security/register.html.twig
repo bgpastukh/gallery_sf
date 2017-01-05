@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+    {{ form_start(form, { 'attr': {'class': 'register-form'}} ) }}
+    <h2>Enter your details:</h2>
+    {{ form_row(form.username) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.email) }}
+    <input type="hidden" name="_target_path" value="account" />
+    {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}
