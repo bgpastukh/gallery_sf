@@ -52,7 +52,6 @@ class SecurityController extends Controller
             return $this->redirectToRoute('main');
         }
 
-
         return $this->render(
             '@App/Security/register.html.twig',
             [
