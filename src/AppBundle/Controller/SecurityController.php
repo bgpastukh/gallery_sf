@@ -60,10 +60,4 @@ class SecurityController extends Controller
             ]
         );
     }
-
-    public function confirmedAction()
-    {
-        return $this->render('MDBPlatformBundle:'
-        );
-    }
 }
